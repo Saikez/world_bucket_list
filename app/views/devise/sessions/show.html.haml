@@ -1,0 +1,6 @@
+!!! 5
+%html
+  %body
+    %h1
+      =current_user.email
+      =button_to('Sign_out', destroy_user_session_path, method: :delete)
