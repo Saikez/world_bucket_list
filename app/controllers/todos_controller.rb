@@ -67,7 +67,6 @@ class TodosController < ApplicationController
         # format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to user_profile_path
   end
 
   private
@@ -78,6 +77,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:details)
+      params.require(:todo).permit(:details, :location)
     end
 end

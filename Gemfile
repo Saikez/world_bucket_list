@@ -13,6 +13,7 @@ gem 'devise'
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'simple_form'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug'

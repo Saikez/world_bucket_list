@@ -66,6 +66,7 @@ When(/^I add a ToDo item to a Destination$/) do
   end
 
   fill_in 'Details', with: 'Your mom'
+  fill_in 'Location', with: 'London'
 
   click_button 'Save'
 end
@@ -75,3 +76,10 @@ Then(/^The ToDo item appears under Destination on the Bucket List$/) do
     expect(page).to have_content('Your mom')
   end
 end
+
+Then(/^The ToDo item has longitude and latitude$/) do
+  @todo = Todo.last
+  expect(@todo.latitude).to_not be_nil
+  expect(@todo.longitude).to_not be_nil
+end
+

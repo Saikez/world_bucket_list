@@ -18,6 +18,7 @@
             %legend
               %strong ToDo
             =simple_format td.details
+            =td.location
             =button_to('Edit ToDo', [:edit, :user, destination, td], method: :get)
             =button_to('Remove ToDo', [:user, destination, td], method: :delete)
       =button_to('Add ToDo', [:new, :user, destination, :todo], method: :get)

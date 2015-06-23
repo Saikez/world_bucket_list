@@ -9,3 +9,4 @@ Feature: User can add ToDo items to Destinations
     When I view my Bucket List
     And I add a ToDo item to a Destination
     Then The ToDo item appears under Destination on the Bucket List
+    And The ToDo item has longitude and latitude
