@@ -1,5 +1,6 @@
 class Destination < ActiveRecord::Base
   belongs_to :user
+  has_many :todos
   before_create :capitalize_name
 
   validates_presence_of :name

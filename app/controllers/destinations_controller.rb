@@ -17,8 +17,16 @@ class DestinationsController < ApplicationController
   end
 
   def destroy
-    current_user.destinations.find(params[:id]).destroy
-    redirect_to user_profile_path
+    @destination = current_user.destinations.find(params[:id])
+    respond_to do |format|
+      if @destination.destroy!
+        format.html { redirect_to [:user, :profile], notice: 'Destination was successfully removed.' }
+        # format.json { render :show, status: :ok, location: @todo }
+      else
+        format.html { redirect_to [:user, :profile], notice: 'There was a problem. Destination was not removed.' }
+        # format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

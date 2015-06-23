@@ -57,5 +57,21 @@ end
 
 Then(/^I see my Destinations in alphabetical order$/) do
   expect(page.all('.destination').map { |e| e.text }).to eq(['Brazil', 'Italy'])
+  expect(page.all('.destination').map { |e| e.text }).to_not eq(['Italy', 'Brazil'])
 end
 
+When(/^I add a ToDo item to a Destination$/) do
+  within "fieldset##{Destination.last.id}" do
+    click_button 'Add ToDo'
+  end
+
+  fill_in 'Details', with: 'Your mom'
+
+  click_button 'Save'
+end
+
+Then(/^The ToDo item appears under Destination on the Bucket List$/) do
+  within "fieldset##{Destination.last.id}" do
+    expect(page).to have_content('Your mom')
+  end
+end

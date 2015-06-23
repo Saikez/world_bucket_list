@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   end
 
   # resource :user
-  resource :user, only: {} do
-    resources :destinations, only: [:new, :create, :destroy]
+  resource :user, only: [] do
+    resources :destinations, only: [:new, :edit, :create, :destroy] do
+      resources :todos, only: [:new, :edit, :create, :update, :destroy]
+    end
   end
 
   devise_for :users, controllers: {
