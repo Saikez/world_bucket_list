@@ -11,7 +11,7 @@
       -@destinations.each do |dest|
         %fieldset
           %legend Destination
-          %h3
+          %h3.destination
             =dest.name
           =button_to('Remove this destination', [:user, dest], method: :delete)
         %br
