@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %body
+    %h1 Add a Destination
+    %br
+    =simple_form_for([current_user, @destination]) do |d|
+      =d.error_notification
+      =d.input :name
+
+      =d.button :submit

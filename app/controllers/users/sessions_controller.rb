@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def show
-    @user = current_user
+    @destinations = current_user.destinations.sort_by { |dest| dest.name.downcase }
     render :show
   end
 

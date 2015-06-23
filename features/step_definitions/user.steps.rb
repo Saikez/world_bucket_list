@@ -19,3 +19,24 @@ end
 Then(/^I am directed to my profile$/) do
   expect(page).to have_content('ben@ben.ben')
 end
+
+Given(/^I am registered$/) do
+  visit new_user_registration_path
+
+  fill_in 'Email', with: 'ben@ben.ben'
+  fill_in 'Password', with: 'ben@ben.ben'
+  fill_in 'Password confirmation', with: 'ben@ben.ben'
+
+  click_button 'Sign up'
+end
+
+When(/^I add a uniquely named Destination$/) do
+  click_button 'Add a Destination'
+
+  fill_in 'Name', with: 'A place'
+  click_button 'Create Destination'
+end
+
+Then(/^the Destination appears on my Bucket List$/) do
+  expect(page).to have_content('A place')
+end

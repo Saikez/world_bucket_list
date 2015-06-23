@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   as :user do
-    get 'users/profile' => 'devise/sessions#show', as:  :profile_user_session
+    get 'users/profile' => 'users/sessions#show', as:  :user_profile
+    # get 'users/profile/add_destination' => 'destinations#new',
+    #   as: :add_user_destination
+    # delete 'users/profile/delete_destination' => 'destinations#destroy',
+    #   as: :destroy_user_destination
+    # post 'users/profile/add_destination' => 'destinations#create',
+    #   as: :create_user_destinations
+  end
+
+  # resource :user
+  resource :user, only: {} do
+    resources :destinations, only: [:new, :create, :destroy]
   end
 
   devise_for :users, controllers: {
